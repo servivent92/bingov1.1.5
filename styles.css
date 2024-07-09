@@ -1,0 +1,416 @@
+/* General Styles */
+/* Ejemplo de estilos adicionales para mejorar la apariencia general */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(to right, #22A6F2, #00A2FF);
+    /*background: linear-gradient(to right, #ff7e5f, #feb47b);*/
+    position: relative;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.section {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 1px 10px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    flex: 1;
+}
+
+/* Estilo para el modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenido del modal */
+.modal-content {
+    display: grid;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Botón de cierre del modal */
+.close-button {
+    text-align: right;
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Winners Container */
+.winners-container {
+    max-width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: normal;
+    height: 263px;
+    /* max-height: 32vh; */
+    overflow-y: auto;
+}
+
+.winners-container h2 {
+    margin: 0 0 10px;
+    font-size: 18px;
+}
+
+/* Prize Table Styles */
+.prize-table-container {
+    text-align: center;
+}
+
+.prize-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.prize-form input {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.prizeTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.prizeTable th,
+.prizeTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.prizeTable th {
+    background-color: #f2f2f2;
+}
+
+.info {
+    text-align-last: start;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+.info span {
+    padding-right: 50px;
+}
+
+
+.highlight {
+    background-color: #ff7e5f;
+    color: rgb(30, 30, 30);
+    font-weight: bold;
+    font-size: 18px;
+    transition: background-color 0.5s ease;
+}
+
+/* End Message Styles */
+.message {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    display: none;
+    z-index: 1000;
+}
+
+/*Efecto de confetti------*/
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #282c34;
+    margin: 0;
+    overflow: hidden;
+    flex-direction: column;
+}
+
+.confetti-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 30px;
+    background-color: var(--color);
+    opacity: 0;
+    animation: explosion linear forwards;
+    transform-origin: center;
+}
+
+.win-message {
+    font-size: 2em;
+    color: #00A2FF;
+    font-weight: bold;
+    border: 2px solid #00A2FF;
+    background: rgba(255, 255, 255, 0.8);
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    text-align: center;
+}
+
+@keyframes explosion {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 1;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(var(--x), var(--y)) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+@keyframes message-in-out {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.5);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/*----------------------------*/
+/* Player Table Styles */
+
+
+.players-container h2 {
+    
+    font-size: 20px;
+    margin: 0 0 10px;
+    text-align: left;
+}
+
+.players-container .button-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.players-container .button-container input {
+    max-width: 150px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.players-container .button-container input:focus {
+    border-color: #00A2FF;
+    box-shadow: 0 0 8px #00A2FF;
+    outline: none;
+}
+
+.playerTable {
+    width: 100%;
+    max-height: 84%;
+    overflow-y: auto;
+}
+
+.players-container table {
+    width: 100%;
+
+}
+
+.players-container th,
+.players-container td {
+
+    border: 1px solid #ddd;
+}
+
+.players-container th {
+    background-color: #f2f2f2;
+}
+
+.players-container {
+    height: 90vh;
+    /* 80% of the viewport height */
+    overflow: hidden;
+    /* Hide any overflow content */
+    width: 100%;
+}
+
+.player-table-container {
+    height: 90%;
+    overflow-y: auto;
+    /* Add vertical scrollbar if content overflows */
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .players-container,
+    .section {
+        width: 100%;
+        height: auto;
+    }
+
+    .player-table-container {
+        height: auto;
+    }
+}
+
+/*----------------------------------------------------------------------------------------------*/
+.historialContent {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* emoji en el input de jugadores-------*/
+.player-name-container {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    justify-content: center;
+}
+
+.editable {
+    width: 200px;
+    border: none;
+    background: none;
+    /* padding: 5px; */
+    margin: 0;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;   
+
+}
+.player-name-container input:focus {
+    border-color: #00A2FF;
+    box-shadow: 0 0 8px #00A2FF;
+    outline: none;
+}
+
+.player-gif {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+@keyframes flashG {
+    0% { color: #1f1f1f; background-color: var(--flash-color); box-shadow: 0 0 15px var(--flash-color); }
+    50% { color: #ffffff; background-color: white; box-shadow: 0 0 15px rgb(255, 255, 255); }
+    100% { color: #1f1f1f; background-color: var(--flash-color); box-shadow: 0 0 15px var(--flash-color); }
+}
+
+@keyframes flash {
+    0% { color: #ffffff; background-color: #00A2FF; box-shadow: 0 0 15px #00A2FF; }
+    50% { color: #ffffff; background-color: white; box-shadow: 0 0 15px rgb(255, 255, 255); }
+    100% { color: #ffffff; background-color: #00A2FF; box-shadow: 0 0 15px #00A2FF; }
+}
+
+.flash {
+    animation: flash 2s ease-in-out;
+}
+
+.flashG {
+    animation: flashG 2s infinite alternate ease-in-out;
+}
+
+.prize-form input:focus {
+    border-color: #00A2FF;
+    box-shadow: 0 0 8px #00A2FF;
+    outline: none;
+}
+
+@keyframes colorChange {
+    0% {
+        box-shadow: 0 0 20px 0 rgba(255, 0, 0, 0.8); /* Rojo */
+        background-color: rgba(255, 0, 0, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 20px 0 rgb(255, 230, 0); /* Verde */
+        background-color: rgb(238, 219, 49, 0.2); 
+    }
+    100% {
+        box-shadow: 0 0 20px 0 rgba(30, 255, 0, 0.8); /* Azul */
+        background-color: rgba(30, 255, 0, 0.2);
+    }
+    
+}
+
+#logoContainer {
+    display: inline-block;
+    padding: 10px;
+    border-radius: 8px;
+    animation: colorChange 5s infinite; /* Animación de cambio de color */
+}
+
+#logoImage {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+

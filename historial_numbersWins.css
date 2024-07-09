@@ -1,0 +1,25 @@
+/* Winner Number Styles */
+.winner-number {
+    font-size: 20px;
+    margin: 10px 0;
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.last-winner {
+    background-color: #ff7e5f;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(255, 126, 95, 0.5);
+}
+
+@keyframes numberWin {
+    0% { background-color: #00A2FF; box-shadow: 0 0 5px #00A2FF; }
+    50% { color: #ffffff; background-color: #ffffff; box-shadow: 0 0 5px #ffffff; }
+    100% { background-color: #00A2FF; box-shadow: 0 0 5px #00A2FF; }
+}
+
+.numberWin {
+    animation: numberWin 1s infinite alternate ease-in-out;
+}

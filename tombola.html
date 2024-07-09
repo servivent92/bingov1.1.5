@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="loading.css">
+    <link rel="stylesheet" href="buttons.css">
+    <link rel="stylesheet" href="historial_numbersWins.css">
+    <link rel="stylesheet" href="tombola.css">
+    <link rel="stylesheet" href="animation_generatedNumbers.css">
+    <link rel="stylesheet" href="modal.css">
+    <link rel="stylesheet" href="paletaColores.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Tómbola</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .welcome-container {
+            display: ruby;
+            position: fixed;
+            font-size: 10px;
+            top: 10px;
+            right: 10px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.438);
+            cursor: move;
+            z-index: 1000;
+        }
+
+        .welcome-container button {
+            margin-top: 10px;
+            padding: 10px;
+            border: none;
+            background-color: #dc3545;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .welcome-container button:hover {
+            background-color: #c82333;
+        }
+
+        #changePasswordBtn {
+            background-color: #007bff;
+        }
+
+        #changePasswordBtn:hover {
+            background-color: #0056b3;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 8px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        input,
+        select {
+            
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        
+    </style>
+
+</head>
+
+<body>
+    <div class="confetti-container" id="confetti-container"></div>
+    <div class="win-message" id="win-message">¡Felicidades has ganado!</div>
+
+    <div id="customModal" class="custom-modal">
+        <div class="custom-modal-content">
+            <span class="custom-close-button" onclick="closeModal()">&times;</span>
+            <p id="modal-message"></p>
+        </div>
+    </div>
+
+    <div id="passwordModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModalPassword()">&times;</span>
+            <h2>Cambiar Contraseña</h2>
+            <select id="userSelect">
+                <option value="usuario">Usuario</option>
+                <option value="administrador">Administrador</option>
+            </select>
+            <input type="password" id="newPassword" placeholder="Nueva Contraseña">
+            <input type="password" id="confirmPassword" placeholder="Confirmar Contraseña">
+            <button onclick="changePassword()">Guardar</button>
+        </div>
+    </div>
+
+    <div id="customHistorialModal" class="custom-modal">
+        <div class="custom-modal-content">
+            <span class="custom-close-button" onclick="closeHistorialModal()">&times;</span>
+            <div class="custom-contenedor-contraseña">
+                <p>Contraseña:</p>
+                <input type="password" id="password" placeholder="Contraseña">
+                <button onclick="verificarContraseña()">Entrar</button>
+            </div>
+
+            <div id="customHistorialContent" class="custom-historial-content">
+                <div class="custom-input-row">
+                    <input type="text" id="search" placeholder="Buscar en el historial" onkeyup="buscarEnHistorial()">
+                </div>
+                <div class="custom-table-container">
+                    <table class="custom-prizeTable" id="gameHistoryTable">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Jugadores</th>
+                                <th>Ganador</th>
+                                <th>Premio</th>
+                                <th>Fecha</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Aquí se agregarán los registros de los juegos -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="customChangePasswordContent" class="custom-change-password-content" style="display: none;">
+                <div class="custom-input-row">
+                    <button onclick="reiniciarHistorial()">Eliminar todo el Historial</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="message" id="end-message">No queda más números, el juego ha terminado, ¡click en Reiniciar Juego!</div>
+    <div class="container">
+
+        <div class="welcome-container">
+            <h2 id="welcomeMessage"></h2>
+            <button onclick="logout()"><i class="material-icons">logout</i></button>
+            <button id="changePasswordBtn" onclick="openModal()"><i class="material-icons">password</i></button>
+        </div>
+
+        <div class="section Mytombola">
+            <div id="logoContainer">
+                <img src="logo.png" alt="Logotipo" id="logoImage">
+            </div>
+
+            <!-- Contenido de la sección "MI TOMBOLA" -->
+            <h1></h1>
+            <div class="tombola">
+
+                <div class="section winners-container">
+                    <h2>Números</h2>
+                    <div id="winners-list"></div>
+                </div>
+
+                <div class="section tombola-container">
+
+                    <div class="inputs">
+                        <input type="number" id="start" placeholder="Inicio">
+                        <input type="number" id="end" placeholder="Fin">
+                    </div>
+                    <div class="circle" id="winner">?</div>
+                    <div class="button-container">
+                        <button class="button green-btn" onclick="startTombola()" tabindex="6"><i
+                                class="material-icons">play_arrow</i> Iniciar</button>
+                        <button class="button red-btn" onclick="resetGame()"><i class="material-icons">sync</i>
+                            Reiniciar</button>
+                    </div>
+                </div>
+
+                <audio id="tombolaSound" src="sounds/tombola.mp3"></audio>
+                <audio id="generaNumbersSound" src="sounds/blip.mp3"></audio>
+                <audio id="winner1" src="sounds/felicidades.mp3"></audio>
+                <audio id="winner2" src="sounds/felicidadesTenemosGanador.mp3"></audio>
+                <audio id="fin1" src="sounds/aplauso.mp3"></audio>
+                <audio id="fin2" src="sounds/fin.mp3"></audio>
+                <audio id="winnerSound"></audio>
+
+
+            </div>
+
+            <div class="prize-table-container">
+                <h2>Tabla de Premios</h2>
+                <div class="prize-form">
+                    <label for="prize-amount"></label>
+                    <input type="number" id="prize-amount" placeholder="Monto" tabindex="5">
+                    <button class="button green-btn" onclick="addPrize()"><i class="material-icons">add</i></button>
+                    <button class="button red-btn" onclick="deletePrize()"><i class="material-icons">delete</i></button>
+                    <button id="abrirHistorial" class="button blue-btn" onclick="abrirHistorial()">Abrir Historial</button>
+                </div>
+                <table class="prizeTable" id="prizeTable">
+                    <thead>
+                        <tr>
+                            <th>Posición</th>
+                            <th>Premio</th>
+                            <th>Ganadores</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Aquí se agregarán los premios -->
+                    </tbody>
+                </table>
+            </div>
+
+
+
+        </div>
+
+
+        <div class="section players-container">
+
+            <!-- Contenido de la sección "TABLA DE JUGADORES" -->
+            <h2>TABLA DE JUGADORES</h2>
+            <div class="info">
+                <span id="players-count">Jugadores: 0</span>
+                <span id="total-numbers">Números: 0</span>
+                <span id="winnerNumbers">Ganadores: 0</span>
+            </div>
+
+            <div class="button-container">
+                <input type="number" id="numPlayers" placeholder="Cantidad de Jugadores" tabindex="1">
+                <button class="button green-btn" id="addPlayerBtn" tabindex="2"><i
+                        class="material-icons">add</i></button>
+                <button class="button red-btn" onclick="deletePlayer()"><i class="material-icons">delete</i></button>
+                <button class="button blue-btn" id="generateNumbersBtn" tabindex="4">Generar Números</button>
+
+                <button id="openPaletteModal">Colores</button>
+                <div id="modalPaleta" class="modalPaleta">
+                    <div class="modalPaleta-content">
+                        <span class="modalPaletaclose" id="closePaletteModal">&times;</span>
+                        <div id="colorPalette"></div>
+                        <input type="color" id="colorInput">
+                        <button onclick="addColor()">Agregar Color</button>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+            <div class="playerTable player-table-container">
+                <table id="playerTable">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Jugador</th>
+                            <th>Casilla 1</th>
+                            <th>Casilla 2</th>
+                            <th>Casilla 3</th>
+                            <th>Casilla 4</th>
+                            <th>Casilla 5</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Los jugadores se agregarán aquí -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <div id="number-animation-container"></div>
+        <div id="loading-screen">
+            <div class="spinner"></div>
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+    <script src="winnersDetected.js"></script>
+    <script src="generarNumerosPlayers.js"></script>
+    <script src="tombolaStart.js"></script>
+    <script src="historialJuego.js"></script>
+    <script src="confetti.js"></script>
+    <script src="modal.js"></script>
+    <script src="paletaColores.js"></script>
+
+
+
+</body>
+
+</html>

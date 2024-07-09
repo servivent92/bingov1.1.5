@@ -1,0 +1,127 @@
+/* Tombola Styles */
+
+
+.tombola-container {
+    max-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.inputs {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.inputs input {
+    width: 45%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.inputs input:focus {
+    border-color: #00A2FF;
+    box-shadow: 0 0 8px #00A2FF;
+    outline: none;
+}
+
+@keyframes circle {
+    0% { background-color: #00A2FF; box-shadow: 0 0 5px #00A2FF; }
+    50% { color: #ffffff; background-color: #00A2FF; box-shadow: 0 0 5px #ffffff; }
+    100% { background-color: #00A2FF; box-shadow: 0 0 5px #202020; }
+}
+
+.circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: #00A2FF;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 70px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px #00A2FF;
+    
+    transition: transform 0.5s ease, background-color 0.3s ease;
+    animation: circle 1s infinite alternate ease-in-out;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+}
+
+/* Ajustar el tamaño de la sección de la tombola */
+.Mytombola {
+    max-width: 400px;
+    min-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: 90vh;
+    /* 80% of the viewport height */
+    overflow: hidden;
+    /* Hide any overflow content */
+    width: 100%;
+
+}
+
+/* Estilo para centrar y espaciar los elementos dentro de la sección de la tombola */
+.tombola {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+/* Estilo para los contenedores de secciones dentro de la tombola */
+.section {
+    flex: 1;
+    margin: 0 10px;
+}
+
+
+/*--------------------tabla precio----------------------------------*/
+.prize-table-container {
+    width: 100%;
+    /* max-height: 300px;  Ajusta esta altura según tus necesidades */
+    overflow-y: auto; /* Agrega un scroll vertical cuando el contenido exceda el alto máximo */
+}
+
+.prizeTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Estilo para las celdas de la tabla */
+.prizeTable th,
+.prizeTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+/* Ajuste del ancho de los input y botones en la tabla de premios */
+.prize-form input,
+.prize-form button {
+    margin: 5px;
+}
+
+.Mytombola h1 {
+    font-size: 20px;
+    margin: 0 0 10px;
+}
+
+.prize-table-container h2 {
+    font-size: 20px;
+    margin: 15px 0 0;
+}

@@ -1,0 +1,45 @@
+/* Estilos para los botones */
+.button {
+    display: flex;
+    align-items: center;
+    /* background-color: #ccc; */
+    /* color: #333; */
+    border: none;
+    padding: 5px 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.button-action {
+    border: none;
+    padding: 1px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.green-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.red-btn {
+    background-color: #d4382d;
+    color: white;
+}
+
+.blue-btn {
+    background-color: #0082d8;
+    color: white;
+}
+
+.green-btn:hover {
+    background-color: #37cf3c;
+}
+
+.red-btn:hover {
+    background-color: #ff4f42;
+}
+
+.blue-btn:hover {
+    background-color: #19a3ff;
+}

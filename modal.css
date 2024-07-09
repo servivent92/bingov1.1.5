@@ -1,0 +1,164 @@
+.custom-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.custom-modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 50%;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.custom-close-button {
+    color: red; /* Color rojo */
+    float: right;
+    font-size: 36px; /* Tamaño de fuente más grande */
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease; /* Transición suave para el cambio de color */
+}
+
+.custom-close-button:hover,
+.custom-close-button:focus {
+    color: darkred; /* Color rojo oscuro al pasar el ratón por encima */
+    text-decoration: none;
+}
+
+.custom-contenedor-contraseña {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.custom-contenedor-contraseña input,
+.custom-contenedor-contraseña button {
+    margin-top: 10px;
+}
+
+.custom-contenedor-contraseña input {
+    width: 70%;
+    padding: 10px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.custom-contenedor-contraseña button {
+    padding: 10px 20px;
+    margin: 5px 0;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.custom-contenedor-contraseña button:hover {
+    background-color: #0056b3;
+}
+
+.custom-historial-content {
+    height: calc(100% - 50px);
+    display: none;
+}
+
+.custom-input-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.custom-input-row input,
+.custom-input-row button {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.custom-input-row button {
+    background-color: #007BFF;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.custom-input-row button:hover {
+    background-color: #0056b3;
+}
+
+.custom-table-container {
+    height: calc(100% - 100px); /* Ajusta según el espacio disponible */
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.custom-prizeTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.custom-prizeTable thead th {
+    background-color: #f2f2f2;
+    position: sticky;
+    top: 0;
+    border-bottom: 2px solid #ddd;
+}
+
+.custom-prizeTable th, .custom-prizeTable td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+#search {
+    max-width: 250px;
+    padding: 10px;
+    margin-top: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#newPassword {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+
+
+
+#customChangePasswordContent button {
+    background-color: #ff0019;
+}
+
+#customChangePasswordContent button:hover {
+    background-color: #ff818e;
+}

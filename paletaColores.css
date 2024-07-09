@@ -1,0 +1,122 @@
+#colorPalette {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.colorBox {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.colorBox:hover {
+    transform: scale(1.1);
+}
+
+.removeColor {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: rgba(255, 0, 0, 0.8);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+}
+
+.modalPaleta {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modalPaleta-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    width: 80%;
+    max-width: 400px; /* Limita el ancho máximo del modal para mejor legibilidad */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modalPaletaclose {
+    color: red; /* Color rojo */
+    float: right;
+    font-size: 36px; /* Tamaño de fuente más grande */
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease; /* Transición suave para el cambio de color */
+}
+
+.modalPaletaclose:hover,
+.modalPaletaclose:focus {
+    color: darkred; /* Color rojo oscuro al pasar el ratón por encima */
+    text-decoration: none;
+}
+
+
+#colorInput {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+#colorInput:hover {
+    border-color: #999;
+}
+
+#colorInput:focus {
+    outline: none;
+    border-color: #007bff; /* Color de borde azul cuando está enfocado */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Sombra azul sutil al estar enfocado */
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#openPaletteModal {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff; /* Color de fondo azul */
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+#openPaletteModal:hover {
+    background-color: #0056b3; /* Color de fondo azul oscuro al pasar el cursor */
+}
